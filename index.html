@@ -1,0 +1,2492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Engutoto Secondary School - Education for Wisdom</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    :root {
+      --color-primary-light: #81C4E8;
+      --color-primary: #3B82A6;
+      --color-primary-dark: #1E4E68;
+      --color-dark: #0f172a;
+      --color-dark-bg: #090e1a;
+      --color-white: #ffffff;
+      --color-bg-light: #F8FAFC;
+      --color-border: #E2E8F0;
+      --color-gold: #B45309;
+      --color-text-muted: #334155;
+      --font-heading: 'Playfair Display', Georgia, serif;
+      --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    html, body {
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--color-bg-light);
+      color: var(--color-dark);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .header-wrapper {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 14px 24px;
+      background-color: rgba(248, 250, 252, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: none;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--color-dark);
+      min-width: 0;
+      flex-shrink: 0;
+    }
+
+    .brand-logo img {
+      height: 44px;
+      width: auto;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+
+    .brand-text {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 1.15rem;
+      line-height: 1.15;
+      white-space: nowrap;
+    }
+
+    .brand-text span {
+      display: block;
+      font-family: var(--font-body);
+      font-size: 0.72rem;
+      color: var(--color-text-muted);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      list-style: none;
+      background-color: rgba(255, 255, 255, 0.95);
+      padding: 5px 8px;
+      border-radius: 50px;
+      border: 1px solid var(--color-border);
+    }
+
+    .nav-link {
+      text-decoration: none;
+      color: var(--color-dark);
+      font-weight: 600;
+      font-size: 0.88rem;
+      padding: 8px 16px;
+      border-radius: 50px;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-link:hover, .nav-link.active {
+      background-color: var(--color-bg-light);
+      color: var(--color-primary-dark);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .search-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .search-box {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--color-white);
+      border: 1.5px solid var(--color-border);
+      border-radius: 50px;
+      height: 40px;
+      width: 40px;
+      overflow: hidden;
+      transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease;
+    }
+
+    .search-box.open {
+      width: 220px;
+      border-color: var(--color-primary);
+      justify-content: space-between;
+    }
+
+    .search-input {
+      width: 0;
+      height: 100%;
+      border: none;
+      outline: none;
+      background: transparent;
+      padding: 0;
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      color: var(--color-dark);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease, width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .search-box.open .search-input {
+      width: calc(100% - 40px);
+      padding-left: 14px;
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .search-trigger {
+      width: 40px;
+      height: 40px;
+      min-width: 40px;
+      border: none;
+      background: transparent;
+      color: var(--color-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      border-radius: 50%;
+      padding: 0;
+      margin: 0;
+      transition: color 0.2s ease;
+    }
+
+    .search-trigger svg {
+      display: block;
+      margin: auto;
+    }
+
+    .search-trigger:hover {
+      color: var(--color-primary);
+    }
+
+    .nav-toggle-btn {
+      display: none;
+      width: 40px;
+      height: 40px;
+      min-width: 40px;
+      border-radius: 50%;
+      border: 1.5px solid var(--color-border);
+      background: var(--color-white);
+      color: var(--color-dark);
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      padding: 0;
+    }
+
+    .nav-toggle-btn:hover {
+      border-color: var(--color-dark);
+    }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+      background-color: var(--color-dark);
+      color: var(--color-white);
+      padding: 10px 18px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+      flex-shrink: 0;
+      border: 1px solid var(--color-dark);
+    }
+
+    .nav-cta:hover {
+      background-color: #1e293b;
+      transform: translateY(-1px);
+    }
+
+    .sidebar-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background-color: rgba(15, 23, 42, 0.45);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .sidebar-backdrop.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .sidebar-drawer {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 290px;
+      max-width: 85vw;
+      height: 100%;
+      background: var(--color-white);
+      border-left: 1.5px solid var(--color-border);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 24px 20px;
+      transform: translateX(100%);
+      transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .sidebar-backdrop.active .sidebar-drawer {
+      transform: translateX(0);
+    }
+
+    .sidebar-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--color-border);
+      gap: 12px;
+    }
+
+    .sidebar-close-btn {
+      width: 36px;
+      height: 36px;
+      min-width: 36px;
+      border-radius: 50%;
+      border: 1px solid var(--color-border);
+      background: var(--color-white);
+      color: var(--color-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .sidebar-close-btn:hover {
+      border-color: var(--color-dark);
+      background-color: var(--color-bg-light);
+    }
+
+    .sidebar-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin: 24px 0 auto;
+    }
+
+    .sidebar-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      border-radius: 12px;
+      text-decoration: none;
+      color: var(--color-dark);
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.2s ease;
+      border: 1px solid transparent;
+    }
+
+    .sidebar-link:hover, .sidebar-link.active {
+      background-color: var(--color-bg-light);
+      color: var(--color-primary-dark);
+      border-color: var(--color-border);
+    }
+
+    .sidebar-footer {
+      padding-top: 20px;
+      border-top: 1px solid var(--color-border);
+    }
+
+    .sidebar-cta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 14px;
+      border-radius: 50px;
+      background-color: var(--color-dark);
+      color: var(--color-white);
+      font-size: 0.92rem;
+      font-weight: 600;
+      text-decoration: none;
+      border: 1px solid var(--color-dark);
+    }
+
+    .hero-section {
+      position: relative;
+      min-height: calc(100vh - 74px);
+      display: flex;
+      align-items: center;
+      padding: 60px 0;
+      background-color: var(--color-bg-light);
+      overflow: hidden;
+    }
+
+    .hero-right-media {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 55%;
+      height: 100%;
+      z-index: 1;
+      pointer-events: none;
+      display: block;
+    }
+
+    .hero-right-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+    .hero-right-media::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 2;
+      background: 
+        linear-gradient(to right, var(--color-bg-light) 0%, rgba(248, 250, 252, 0.88) 15%, rgba(248, 250, 252, 0.15) 55%, transparent 100%),
+        linear-gradient(to top, var(--color-bg-light) 0%, rgba(248, 250, 252, 0.9) 14%, rgba(248, 250, 252, 0.3) 38%, transparent 55%),
+        linear-gradient(to bottom, var(--color-bg-light) 0%, transparent 18%);
+    }
+
+    .hero-container {
+      position: relative;
+      z-index: 10;
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      text-align: left;
+    }
+
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 16px;
+      background-color: rgba(255, 255, 255, 0.95);
+      border: 1px solid var(--color-border);
+      border-radius: 50px;
+      color: var(--color-primary-dark);
+      font-size: 0.84rem;
+      font-weight: 600;
+      margin-bottom: 18px;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .badge-pill i {
+      flex-shrink: 0;
+      color: var(--color-gold);
+    }
+
+    .hero-motto {
+      display: inline-block;
+      font-family: var(--font-heading);
+      font-style: italic;
+      color: var(--color-gold);
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+      letter-spacing: 0.2px;
+    }
+
+    .hero-title {
+      font-family: var(--font-heading);
+      font-size: clamp(2.35rem, 5vw, 4rem);
+      line-height: 1.12;
+      font-weight: 700;
+      color: var(--color-dark);
+      margin-bottom: 20px;
+      word-wrap: break-word;
+    }
+
+    .hero-title span {
+      color: var(--color-primary);
+      display: inline-block;
+    }
+
+    .hero-description {
+      font-size: 1.1rem;
+      color: var(--color-text-muted);
+      line-height: 1.68;
+      margin-bottom: 32px;
+      max-width: 530px;
+    }
+
+    .cta-group {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      width: 100%;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 13px 24px;
+      min-height: 48px;
+      border-radius: 50px;
+      font-size: 0.92rem;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      white-space: nowrap;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .btn-primary {
+      background-color: var(--color-primary);
+      color: var(--color-white);
+      border: 1px solid var(--color-primary);
+    }
+
+    .btn-primary:hover {
+      background-color: var(--color-primary-dark);
+      border-color: var(--color-primary-dark);
+      transform: translateY(-2px);
+    }
+
+    .btn-primary:active {
+      transform: translateY(1px);
+    }
+
+    .btn-secondary {
+      background-color: var(--color-dark);
+      color: var(--color-white);
+      border: 1px solid var(--color-dark);
+    }
+
+    .btn-secondary:hover {
+      background-color: #1e293b;
+      border-color: #1e293b;
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary:active {
+      transform: translateY(1px);
+    }
+
+    .btn-outline {
+      background-color: rgba(255, 255, 255, 0.95);
+      color: var(--color-dark);
+      border: 1.5px solid var(--color-border);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--color-primary);
+      color: var(--color-primary-dark);
+      background-color: var(--color-white);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline:active {
+      transform: translateY(1px);
+    }
+
+    .hero-floating-meta {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: flex-end;
+      justify-content: flex-end;
+      height: 100%;
+      padding-bottom: 20px;
+    }
+
+    .meta-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background-color: rgba(15, 23, 42, 0.85);
+      color: var(--color-white);
+      padding: 10px 18px;
+      border-radius: 50px;
+      font-size: 0.86rem;
+      font-weight: 500;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .meta-tag i {
+      color: var(--color-primary-light);
+      flex-shrink: 0;
+    }
+
+    .news-section {
+      padding: 80px 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .news-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .news-title {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: var(--color-dark);
+      margin-bottom: 14px;
+      line-height: 1.2;
+    }
+
+    .news-subtitle {
+      font-size: 1.05rem;
+      color: var(--color-text-muted);
+      max-width: 620px;
+      line-height: 1.6;
+    }
+
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      margin-bottom: 44px;
+    }
+
+    .news-card {
+      background: var(--color-white);
+      border: 1.5px solid var(--color-border);
+      border-radius: 20px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .news-card:hover {
+      border-color: var(--color-primary);
+      transform: translateY(-4px);
+    }
+
+    .news-card-img-wrapper {
+      position: relative;
+      width: 100%;
+      height: 200px;
+      overflow: hidden;
+      background-color: var(--color-bg-light);
+    }
+
+    .news-card-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.35s ease;
+    }
+
+    .news-card:hover .news-card-img {
+      transform: scale(1.04);
+    }
+
+    .news-card-tag {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid var(--color-border);
+      border-radius: 50px;
+      padding: 4px 12px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--color-primary-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .news-card-body {
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .news-card-meta {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.8rem;
+      color: var(--color-text-muted);
+      margin-bottom: 10px;
+    }
+
+    .news-card-title {
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--color-dark);
+      line-height: 1.35;
+      margin-bottom: 10px;
+    }
+
+    .news-card-desc {
+      font-size: 0.92rem;
+      color: var(--color-text-muted);
+      line-height: 1.6;
+      margin-bottom: 20px;
+      flex-grow: 1;
+    }
+
+    .news-card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--color-primary);
+      text-decoration: none;
+      transition: gap 0.2s ease;
+    }
+
+    .news-card:hover .news-card-link {
+      gap: 9px;
+      color: var(--color-primary-dark);
+    }
+
+    .news-footer {
+      display: flex;
+      justify-content: center;
+    }
+
+    .memories-section {
+      padding: 80px 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .memories-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      margin-bottom: 36px;
+    }
+
+    .memories-title {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: var(--color-dark);
+      line-height: 1.2;
+    }
+
+    .exhibit-stage-wrapper {
+      position: relative;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .exhibit-viewport {
+      position: relative;
+      width: 100%;
+      height: 400px;
+      perspective: 1200px;
+      perspective-origin: center center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .exhibit-track {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .exhibit-card {
+      position: absolute;
+      width: 500px;
+      max-width: 82vw;
+      height: 330px;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 2px solid var(--color-border);
+      background-color: var(--color-white);
+      cursor: pointer;
+      user-select: none;
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease, border-color 0.3s ease;
+    }
+
+    .exhibit-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      pointer-events: none;
+    }
+
+    .exhibit-controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      margin-top: 24px;
+    }
+
+    .exhibit-nav-btn {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      border: 1.5px solid var(--color-border);
+      background: var(--color-white);
+      color: var(--color-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .exhibit-nav-btn:hover {
+      border-color: var(--color-primary);
+      color: var(--color-primary);
+      background-color: var(--color-bg-light);
+    }
+
+    .exhibit-counter {
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--color-text-muted);
+      min-width: 60px;
+      text-align: center;
+    }
+
+    .contact-section {
+      padding: 90px 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .contact-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .contact-title {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: var(--color-dark);
+      margin-bottom: 14px;
+      line-height: 1.2;
+    }
+
+    .contact-subtitle {
+      font-size: 1.05rem;
+      color: var(--color-text-muted);
+      max-width: 620px;
+      line-height: 1.6;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.35fr;
+      gap: 36px;
+      align-items: flex-start;
+    }
+
+    .contact-info-col {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .contact-card {
+      background: var(--color-white);
+      border: 1.5px solid var(--color-border);
+      border-radius: 20px;
+      padding: 24px;
+      display: flex;
+      align-items: flex-start;
+      gap: 18px;
+      transition: border-color 0.2s ease;
+    }
+
+    .contact-card:hover {
+      border-color: var(--color-primary);
+    }
+
+    .contact-icon-box {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background-color: #f0f7fb;
+      border: 1px solid var(--color-border);
+      color: var(--color-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .contact-card-content {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .contact-card-label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--color-text-muted);
+    }
+
+    .contact-card-text {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--color-dark);
+      line-height: 1.4;
+    }
+
+    .contact-card-text a {
+      color: var(--color-dark);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .contact-card-text a:hover {
+      color: var(--color-primary);
+    }
+
+    .contact-card-desc {
+      font-size: 0.88rem;
+      color: var(--color-text-muted);
+      line-height: 1.5;
+    }
+
+    .contact-form-card {
+      background: var(--color-white);
+      border: 1.5px solid var(--color-border);
+      border-radius: 24px;
+      padding: 34px;
+    }
+
+    .form-heading {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--color-dark);
+      margin-bottom: 6px;
+    }
+
+    .form-subheading {
+      font-size: 0.92rem;
+      color: var(--color-text-muted);
+      margin-bottom: 26px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+
+    .form-group.full-width {
+      grid-column: span 2;
+    }
+
+    .form-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      color: var(--color-dark);
+    }
+
+    .form-input, .form-select, .form-textarea {
+      width: 100%;
+      border: 1.5px solid var(--color-border);
+      border-radius: 12px;
+      padding: 13px 16px;
+      font-family: var(--font-body);
+      font-size: 0.92rem;
+      color: var(--color-dark);
+      background-color: var(--color-white);
+      outline: none;
+      transition: border-color 0.2s ease;
+    }
+
+    .form-input:focus, .form-select:focus, .form-textarea:focus {
+      border-color: var(--color-primary);
+    }
+
+    .form-textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .form-submit-btn {
+      width: 100%;
+      padding: 15px 28px;
+      border-radius: 50px;
+      background-color: var(--color-primary);
+      color: var(--color-white);
+      border: 1px solid var(--color-primary);
+      font-size: 0.96rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: all 0.2s ease;
+    }
+
+    .form-submit-btn:hover {
+      background-color: var(--color-primary-dark);
+      border-color: var(--color-primary-dark);
+    }
+
+    .site-footer {
+      background-color: var(--color-dark-bg);
+      color: #cbd5e1;
+      padding: 80px 24px 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-top-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 0.9fr 1fr 1.1fr;
+      gap: 40px;
+      padding-bottom: 60px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .footer-col {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+      text-decoration: none;
+      color: var(--color-white);
+    }
+
+    .footer-brand img {
+      height: 48px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .footer-brand-title {
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--color-white);
+      line-height: 1.15;
+    }
+
+    .footer-brand-title span {
+      display: block;
+      font-family: var(--font-body);
+      font-size: 0.72rem;
+      color: var(--color-primary-light);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-weight: 600;
+    }
+
+    .footer-motto {
+      font-family: var(--font-heading);
+      font-style: italic;
+      color: #fbbf24;
+      font-size: 1.05rem;
+      margin-bottom: 12px;
+    }
+
+    .footer-desc {
+      font-size: 0.9rem;
+      color: #94a3b8;
+      line-height: 1.65;
+      margin-bottom: 22px;
+    }
+
+    .footer-social-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .footer-social-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      background-color: rgba(255, 255, 255, 0.04);
+      color: var(--color-white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .footer-social-icon:hover {
+      background-color: var(--color-primary);
+      border-color: var(--color-primary);
+      transform: translateY(-2px);
+    }
+
+    .footer-col-title {
+      font-size: 0.92rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: var(--color-white);
+      margin-bottom: 20px;
+    }
+
+    .footer-links-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .footer-link-item a {
+      color: #94a3b8;
+      text-decoration: none;
+      font-size: 0.9rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+    }
+
+    .footer-link-item a:hover {
+      color: var(--color-white);
+      transform: translateX(3px);
+    }
+
+    .footer-contact-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .footer-contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 0.9rem;
+      color: #94a3b8;
+      line-height: 1.5;
+    }
+
+    .footer-contact-item i {
+      color: var(--color-primary-light);
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+
+    .footer-contact-item a {
+      color: #94a3b8;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .footer-contact-item a:hover {
+      color: var(--color-white);
+    }
+
+    .footer-bottom-bar {
+      padding-top: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-size: 0.85rem;
+      color: #64748b;
+    }
+
+    .footer-bottom-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .footer-bottom-links a {
+      color: #64748b;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .footer-bottom-links a:hover {
+      color: var(--color-white);
+    }
+
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background-color: rgba(15, 23, 42, 0.55);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .modal-backdrop.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-dialog {
+      background: var(--color-white);
+      border: 1.5px solid var(--color-border);
+      border-radius: 24px;
+      width: 100%;
+      max-width: 480px;
+      padding: 28px;
+      transform: scale(0.94) translateY(12px);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .modal-backdrop.active .modal-dialog {
+      transform: scale(1) translateY(0);
+    }
+
+    .modal-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 22px;
+      gap: 12px;
+    }
+
+    .modal-heading-group {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .modal-pill {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: var(--color-primary-dark);
+      background-color: var(--color-bg-light);
+      border: 1px solid var(--color-border);
+      padding: 3px 10px;
+      border-radius: 50px;
+      width: fit-content;
+    }
+
+    .modal-title {
+      font-family: var(--font-heading);
+      font-size: 1.45rem;
+      color: var(--color-dark);
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .modal-close-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1px solid var(--color-border);
+      background: var(--color-white);
+      color: var(--color-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: all 0.2s ease;
+    }
+
+    .modal-close-btn:hover {
+      background-color: var(--color-bg-light);
+      border-color: var(--color-dark);
+    }
+
+    .modal-section-title {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--color-text-muted);
+      margin-bottom: 10px;
+    }
+
+    .level-switch-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 22px;
+    }
+
+    .level-card {
+      border: 1.5px solid var(--color-border);
+      border-radius: 14px;
+      padding: 14px 12px;
+      text-align: center;
+      cursor: pointer;
+      background: var(--color-white);
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      color: var(--color-dark);
+    }
+
+    .level-card:hover {
+      border-color: var(--color-primary-light);
+    }
+
+    .level-card.selected {
+      border-color: var(--color-primary);
+      background-color: #f0f7fb;
+      color: var(--color-primary-dark);
+    }
+
+    .level-card i {
+      color: var(--color-primary);
+    }
+
+    .level-name {
+      font-weight: 700;
+      font-size: 0.96rem;
+    }
+
+    .level-hint {
+      font-size: 0.72rem;
+      color: var(--color-text-muted);
+      font-weight: 500;
+    }
+
+    .class-selection-container {
+      margin-bottom: 26px;
+    }
+
+    .class-chips-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .class-chip {
+      padding: 10px 16px;
+      border-radius: 50px;
+      border: 1.5px solid var(--color-border);
+      background: var(--color-white);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--color-dark);
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .class-chip:hover {
+      border-color: var(--color-primary-light);
+    }
+
+    .class-chip.selected {
+      background-color: var(--color-dark);
+      color: var(--color-white);
+      border-color: var(--color-dark);
+    }
+
+    .modal-action-btn {
+      width: 100%;
+      min-height: 48px;
+      border-radius: 50px;
+      padding: 14px 20px;
+      font-size: 0.95rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      text-decoration: none;
+      font-weight: 600;
+      background-color: var(--color-primary);
+      color: var(--color-white);
+      border: 1px solid var(--color-primary);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .modal-action-btn:hover {
+      background-color: var(--color-primary-dark);
+      border-color: var(--color-primary-dark);
+    }
+
+    @media (max-width: 960px) {
+      .header-wrapper {
+        padding: 12px 18px;
+      }
+
+      .nav-menu {
+        display: none;
+      }
+
+      .nav-toggle-btn {
+        display: inline-flex;
+      }
+
+      .search-box.open {
+        width: 160px;
+      }
+
+      .hero-section {
+        min-height: calc(100vh - 72px);
+        padding: 56px 0 64px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .hero-right-media {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        display: block;
+        opacity: 1;
+      }
+
+      .hero-right-media img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 25%;
+        display: block;
+      }
+
+      .hero-right-media::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 2;
+        background: 
+          linear-gradient(to bottom, 
+            var(--color-bg-light) 0%, 
+            rgba(248, 250, 252, 0.12) 12%, 
+            rgba(248, 250, 252, 0.74) 48%, 
+            rgba(248, 250, 252, 0.93) 86%, 
+            var(--color-bg-light) 100%
+          ),
+          linear-gradient(to right, 
+            rgba(248, 250, 252, 0.75) 0%, 
+            rgba(248, 250, 252, 0.5) 25%, 
+            rgba(248, 250, 252, 0.5) 75%, 
+            rgba(248, 250, 252, 0.75) 100%
+          );
+      }
+
+      .hero-container {
+        grid-template-columns: 1fr;
+        gap: 0;
+        text-align: center;
+      }
+
+      .hero-content {
+        align-items: center;
+        text-align: center;
+        width: 100%;
+      }
+
+      .badge-pill {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-motto {
+        text-align: center;
+        width: 100%;
+        display: block;
+      }
+
+      .hero-title {
+        text-align: center;
+        width: 100%;
+      }
+
+      .hero-description {
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 540px;
+        color: #1e293b;
+        font-weight: 500;
+      }
+
+      .cta-group {
+        justify-content: center;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-floating-meta {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding-bottom: 0;
+        margin: 26px auto 0;
+        width: 100%;
+      }
+
+      .meta-tag {
+        background-color: rgba(255, 255, 255, 0.96);
+        color: var(--color-dark);
+        border: 1px solid var(--color-border);
+        font-size: 0.82rem;
+        padding: 8px 16px;
+        font-weight: 600;
+      }
+
+      .meta-tag i {
+        color: var(--color-primary);
+      }
+
+      .news-section, .memories-section, .contact-section {
+        padding: 60px 20px;
+      }
+
+      .news-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .footer-top-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 36px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .header-wrapper {
+        padding: 10px 16px;
+      }
+
+      .brand-logo img {
+        height: 38px;
+      }
+
+      .brand-text {
+        font-size: 1.05rem;
+      }
+
+      .brand-text span {
+        font-size: 0.68rem;
+      }
+
+      .nav-cta {
+        display: none;
+      }
+
+      .search-box.open {
+        width: 140px;
+      }
+
+      .hero-section {
+        min-height: calc(100vh - 60px);
+        padding: 40px 0 48px;
+      }
+
+      .hero-container {
+        padding: 0 16px;
+      }
+
+      .badge-pill {
+        font-size: 0.78rem;
+        padding: 6px 14px;
+        margin-bottom: 14px;
+      }
+
+      .hero-motto {
+        font-size: 1.1rem;
+        margin-bottom: 8px;
+      }
+
+      .hero-title {
+        font-size: clamp(2rem, 9.4vw, 2.7rem);
+        line-height: 1.15;
+        margin-bottom: 16px;
+      }
+
+      .hero-description {
+        font-size: 0.98rem;
+        line-height: 1.62;
+        margin-bottom: 24px;
+      }
+
+      .cta-group {
+        flex-direction: column;
+        width: 100%;
+        max-width: 380px;
+        margin: 0 auto;
+        gap: 10px;
+      }
+
+      .btn {
+        width: 100%;
+        min-height: 48px;
+        padding: 13px 20px;
+        font-size: 0.92rem;
+      }
+
+      .hero-floating-meta {
+        gap: 8px;
+        margin-top: 22px;
+      }
+
+      .meta-tag {
+        font-size: 0.76rem;
+        padding: 7px 13px;
+        gap: 6px;
+      }
+
+      .modal-dialog {
+        padding: 22px 18px;
+      }
+
+      .news-section, .memories-section, .contact-section {
+        padding: 48px 16px;
+      }
+
+      .news-header, .memories-header, .contact-header {
+        margin-bottom: 32px;
+      }
+
+      .news-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+
+      .news-card-img-wrapper {
+        height: 190px;
+      }
+
+      .news-footer .btn {
+        width: 100%;
+        max-width: 380px;
+      }
+
+      .exhibit-viewport {
+        height: 290px;
+      }
+
+      .exhibit-card {
+        width: 290px;
+        height: 220px;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+
+      .form-group.full-width {
+        grid-column: span 1;
+      }
+
+      .contact-form-card {
+        padding: 22px 18px;
+      }
+
+      .footer-top-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .footer-bottom-bar {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .search-box.open {
+        width: 110px;
+      }
+
+      .hero-title {
+        font-size: 1.95rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header-wrapper">
+    <div class="nav-container">
+      <a href="#" class="brand-logo" aria-label="Engutoto Secondary School Home">
+        <img src="images/logo-trn.png" alt="Engutoto Secondary School Logo">
+        <div class="brand-text">
+          Engutoto
+          <span>Secondary School</span>
+        </div>
+      </a>
+
+      <ul class="nav-menu">
+        <li><a href="#home" class="nav-link active">Home</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#academics" class="nav-link">Academics</a></li>
+        <li><a href="#news" class="nav-link">News</a></li>
+        <li><a href="#memories" class="nav-link">Memories</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <div class="search-wrapper">
+          <div class="search-box" id="searchBox">
+            <input type="text" class="search-input" id="searchInput" placeholder="Search school info...">
+            <button class="search-trigger" id="searchTrigger" aria-label="Toggle search input">
+              <i data-lucide="search" style="width: 17px; height: 17px;"></i>
+            </button>
+          </div>
+        </div>
+
+        <a href="#contact" class="nav-cta" aria-label="Contact School">
+          <span>Contact School</span>
+          <i data-lucide="arrow-up-right" style="width: 15px; height: 15px;"></i>
+        </a>
+
+        <button type="button" class="nav-toggle-btn" id="navToggleBtn" aria-label="Open Navigation Menu">
+          <i data-lucide="menu" style="width: 18px; height: 18px;"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="sidebar-backdrop" id="sidebarBackdrop">
+    <aside class="sidebar-drawer">
+      <div class="sidebar-header">
+        <a href="#" class="brand-logo" aria-label="Engutoto Secondary School Home">
+          <img src="images/logo-trn.png" alt="Engutoto Secondary School Logo">
+          <div class="brand-text">
+            Engutoto
+            <span>Secondary School</span>
+          </div>
+        </a>
+        <button type="button" class="sidebar-close-btn" id="sidebarCloseBtn" aria-label="Close Navigation">
+          <i data-lucide="x" style="width: 18px; height: 18px;"></i>
+        </button>
+      </div>
+
+      <nav class="sidebar-nav">
+        <a href="#home" class="sidebar-link active">
+          <i data-lucide="home" style="width: 18px; height: 18px;"></i>
+          <span>Home</span>
+        </a>
+        <a href="#about" class="sidebar-link">
+          <i data-lucide="info" style="width: 18px; height: 18px;"></i>
+          <span>About</span>
+        </a>
+        <a href="#academics" class="sidebar-link">
+          <i data-lucide="book-open" style="width: 18px; height: 18px;"></i>
+          <span>Academics</span>
+        </a>
+        <a href="#news" class="sidebar-link">
+          <i data-lucide="newspaper" style="width: 18px; height: 18px;"></i>
+          <span>News</span>
+        </a>
+        <a href="#memories" class="sidebar-link">
+          <i data-lucide="image" style="width: 18px; height: 18px;"></i>
+          <span>Memories</span>
+        </a>
+        <a href="#contact" class="sidebar-link">
+          <i data-lucide="mail" style="width: 18px; height: 18px;"></i>
+          <span>Contact</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <a href="#contact" class="sidebar-cta">
+          <span>Contact School</span>
+          <i data-lucide="arrow-up-right" style="width: 16px; height: 16px;"></i>
+        </a>
+      </div>
+    </aside>
+  </div>
+
+  <section class="hero-section" id="home">
+    <div class="hero-right-media">
+      <img src="images/student-with-lowasa-in-class.jpg" alt="Students in Classroom at Engutoto Secondary School">
+    </div>
+
+    <div class="hero-container">
+      <div class="hero-content">
+        <div class="badge-pill">
+          <i data-lucide="map-pin" style="width: 15px; height: 15px;"></i>
+          <span>Monduli District Council</span>
+        </div>
+
+        <span class="hero-motto">"Education for Wisdom"</span>
+        
+        <h1 class="hero-title">
+          Engutoto <br><span>Secondary School</span>
+        </h1>
+
+        <p class="hero-description">
+          Dedicated to academic achievement, personal integrity, and wisdom through quality secondary education in Tanzania.
+        </p>
+
+        <div class="cta-group">
+          <button type="button" class="btn btn-secondary" id="openJoiningModalBtn">
+            <i data-lucide="download" style="width: 17px; height: 17px;"></i>
+            <span>Joining Instructions</span>
+          </button>
+          <a href="#about" class="btn btn-primary">
+            <span>Learn More</span>
+            <i data-lucide="arrow-right" style="width: 17px; height: 17px;"></i>
+          </a>
+          <a href="#contact" class="btn btn-outline">
+            <i data-lucide="mail" style="width: 17px; height: 17px;"></i>
+            <span>Get in Touch</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-floating-meta">
+        <div class="meta-tag">
+          <i data-lucide="award" style="width: 16px; height: 16px;"></i>
+          <span>Government Secondary School</span>
+        </div>
+        <div class="meta-tag">
+          <i data-lucide="compass" style="width: 16px; height: 16px;"></i>
+          <span>Monduli, Tanzania</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="news-section" id="news">
+    <div class="news-header">
+      <div class="badge-pill">
+        <i data-lucide="newspaper" style="width: 15px; height: 15px;"></i>
+        <span>Latest Announcements</span>
+      </div>
+      <h2 class="news-title">News & Updates</h2>
+      <p class="news-subtitle">Stay informed with the latest academic milestones, upcoming events, and official circulars from our school community.</p>
+    </div>
+
+    <div class="news-grid">
+      <article class="news-card">
+        <div class="news-card-img-wrapper">
+          <img src="images/teachers-hold-sports-awards.webp" alt="Teachers holding sports awards" class="news-card-img">
+          <span class="news-card-tag">Sports</span>
+        </div>
+        <div class="news-card-body">
+          <div class="news-card-meta">
+            <i data-lucide="calendar" style="width: 14px; height: 14px;"></i>
+            <span>February 04, 2025</span>
+          </div>
+          <h3 class="news-card-title">Engutoto Teachers and Athletes Secure District Sports Trophies</h3>
+          <p class="news-card-desc">Our faculty and student athletes proudly display championship trophies earned during the Monduli inter-school athletic and ball games competitions.</p>
+          <span class="news-card-link">
+            <span>Read Details</span>
+            <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
+          </span>
+        </div>
+      </article>
+
+      <article class="news-card">
+        <div class="news-card-img-wrapper">
+          <img src="images/student-in-computer-lab.webp" alt="Student learning in computer lab" class="news-card-img">
+          <span class="news-card-tag">ICT & Learning</span>
+        </div>
+        <div class="news-card-body">
+          <div class="news-card-meta">
+            <i data-lucide="calendar" style="width: 14px; height: 14px;"></i>
+            <span>January 22, 2025</span>
+          </div>
+          <h3 class="news-card-title">Students Advance Practical Digital Skills in Computer Lab</h3>
+          <p class="news-card-desc">Secondary students engage in hands-on computer studies and online research sessions to reinforce digital literacy across science and arts subjects.</p>
+          <span class="news-card-link">
+            <span>Read Details</span>
+            <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
+          </span>
+        </div>
+      </article>
+
+      <article class="news-card">
+        <div class="news-card-img-wrapper">
+          <img src="images/teacher-in-academic-conference.jpg" alt="Teacher participating in academic conference" class="news-card-img">
+          <span class="news-card-tag">Academics</span>
+        </div>
+        <div class="news-card-body">
+          <div class="news-card-meta">
+            <i data-lucide="calendar" style="width: 14px; height: 14px;"></i>
+            <span>January 10, 2025</span>
+          </div>
+          <h3 class="news-card-title">Faculty Represents Engutoto at National Academic Conference</h3>
+          <p class="news-card-desc">Our teachers participate in regional academic symposiums to exchange modern curriculum methodologies and elevate teaching standards.</p>
+          <span class="news-card-link">
+            <span>Read Details</span>
+            <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
+          </span>
+        </div>
+      </article>
+    </div>
+
+    <div class="news-footer">
+      <a href="#news" class="btn btn-outline">
+        <i data-lucide="archive" style="width: 17px; height: 17px;"></i>
+        <span>View All News & Circulars</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="memories-section" id="memories">
+    <div class="memories-header">
+      <div class="badge-pill">
+        <i data-lucide="camera" style="width: 15px; height: 15px;"></i>
+        <span>Campus Moments</span>
+      </div>
+      <h2 class="memories-title">Memory and School Environment</h2>
+    </div>
+
+    <div class="exhibit-stage-wrapper">
+      <div class="exhibit-viewport">
+        <div class="exhibit-track" id="exhibitTrack">
+          <div class="exhibit-card">
+            <img src="images/student-sport.jpg" alt="Student sports event">
+          </div>
+          <div class="exhibit-card">
+            <img src="images/student-with-lowasa-in-class.jpg" alt="Students with Lowassa in classroom">
+          </div>
+          <div class="exhibit-card">
+            <img src="images/teachers-hold-sports-awards.webp" alt="Teachers holding sports awards">
+          </div>
+          <div class="exhibit-card">
+            <img src="images/school-env-1.jpg" alt="Engutoto school environment 1">
+          </div>
+          <div class="exhibit-card">
+            <img src="images/school-env-2.jpg" alt="Engutoto school environment 2">
+          </div>
+          <div class="exhibit-card">
+            <img src="images/school-env-3.jpg" alt="Engutoto school environment 3">
+          </div>
+          <div class="exhibit-card">
+            <img src="images/school-env-4.jpg" alt="Engutoto school environment 4">
+          </div>
+          <div class="exhibit-card">
+            <img src="images/school-env-5.jpg" alt="Engutoto school environment 5">
+          </div>
+          <div class="exhibit-card">
+            <img src="images/school-env-6.jpg" alt="Engutoto school environment 6">
+          </div>
+        </div>
+      </div>
+
+      <div class="exhibit-controls">
+        <button type="button" class="exhibit-nav-btn" id="prevExhibitBtn" aria-label="Previous Memory">
+          <i data-lucide="chevron-left" style="width: 22px; height: 22px;"></i>
+        </button>
+        <div class="exhibit-counter">
+          <span id="currentExhibitIdx">1</span> / <span id="totalExhibitCount">9</span>
+        </div>
+        <button type="button" class="exhibit-nav-btn" id="nextExhibitBtn" aria-label="Next Memory">
+          <i data-lucide="chevron-right" style="width: 22px; height: 22px;"></i>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact-section" id="contact">
+    <div class="contact-header">
+      <div class="badge-pill">
+        <i data-lucide="mail" style="width: 15px; height: 15px;"></i>
+        <span>Get in Touch</span>
+      </div>
+      <h2 class="contact-title">Contact Our Administration</h2>
+      <p class="contact-subtitle">Have questions regarding student enrollment, academic reporting, or institutional visits? Reach out to our Monduli campus office.</p>
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-info-col">
+        <div class="contact-card">
+          <div class="contact-icon-box">
+            <i data-lucide="map-pin" style="width: 22px; height: 22px;"></i>
+          </div>
+          <div class="contact-card-content">
+            <span class="contact-card-label">Official Postal Address</span>
+            <div class="contact-card-text">ENGUTOTO HIGH SCHOOL</div>
+            <div class="contact-card-desc">P.O. BOX 143, Monduli, Arusha, Tanzania</div>
+          </div>
+        </div>
+
+        <div class="contact-card">
+          <div class="contact-icon-box">
+            <i data-lucide="phone-call" style="width: 22px; height: 22px;"></i>
+          </div>
+          <div class="contact-card-content">
+            <span class="contact-card-label">Direct Phone Numbers</span>
+            <div class="contact-card-text">
+              <a href="tel:+255764961311">+255 764 961 311</a>
+            </div>
+            <div class="contact-card-text">
+              <a href="tel:+25572967368">+255 729 673 68</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-card">
+          <div class="contact-icon-box">
+            <i data-lucide="clock" style="width: 22px; height: 22px;"></i>
+          </div>
+          <div class="contact-card-content">
+            <span class="contact-card-label">Office & Consultation Hours</span>
+            <div class="contact-card-text">Monday - Friday</div>
+            <div class="contact-card-desc">07:30 AM - 04:30 PM (EAT)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form-card">
+        <h3 class="form-heading">Send Us a Message</h3>
+        <p class="form-subheading">Fill in the fields below and our academic secretary will get back to you promptly.</p>
+        
+        <form id="contactSchoolForm">
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label" for="senderName">Full Name</label>
+              <input type="text" id="senderName" class="form-input" placeholder="e.g. Baraka John" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="senderPhone">Phone Number</label>
+              <input type="tel" id="senderPhone" class="form-input" placeholder="+255..." required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="inquiryType">Inquiry Topic</label>
+            <select id="inquiryType" class="form-select">
+              <option value="joining">Form 1 & Form 5 Joining Instructions</option>
+              <option value="admissions">General Admissions & Transfers</option>
+              <option value="academic">Academic Transcripts & Certifications</option>
+              <option value="other">Other Official Matters</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="senderMessage">Message</label>
+            <textarea id="senderMessage" class="form-textarea" placeholder="Write your message or inquiry here..." required></textarea>
+          </div>
+
+          <button type="submit" class="form-submit-btn">
+            <span>Send Message</span>
+            <i data-lucide="send" style="width: 17px; height: 17px;"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-top-grid">
+        <div class="footer-col">
+          <a href="#" class="footer-brand" aria-label="Engutoto Secondary School">
+            <img src="images/logo-trn.png" alt="Engutoto Logo">
+            <div class="footer-brand-title">
+              Engutoto
+              <span>Secondary School</span>
+            </div>
+          </a>
+          <span class="footer-motto">"Education for Wisdom"</span>
+          <p class="footer-desc">A distinguished government secondary institution in Monduli District Council committed to academic excellence, leadership development, and disciplined student character.</p>
+<div class="footer-social-row" style="display: flex; gap: 15px; align-items: center;">
+  <a href="#" class="footer-social-icon" aria-label="Facebook" style="color: #ffffff; display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; background: rgba(255,255,255,0.1); border-radius: 50%; text-decoration: none;">
+    <svg style="width: 18px; height: 18px; fill: currentColor;" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+  </a>
+  <a href="#" class="footer-social-icon" aria-label="Instagram" style="color: #ffffff; display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; background: rgba(255,255,255,0.1); border-radius: 50%; text-decoration: none;">
+    <svg style="width: 18px; height: 18px; fill: currentColor;" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+  </a>
+  <a href="#" class="footer-social-icon" aria-label="Twitter" style="color: #ffffff; display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; background: rgba(255,255,255,0.1); border-radius: 50%; text-decoration: none;">
+    <svg style="width: 18px; height: 18px; fill: currentColor;" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+  </a>
+  <a href="#" class="footer-social-icon" aria-label="YouTube" style="color: #ffffff; display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; background: rgba(255,255,255,0.1); border-radius: 50%; text-decoration: none;">
+    <svg style="width: 18px; height: 18px; fill: currentColor;" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+  </a>
+  <a href="https://wa.me/255764961311" class="footer-social-icon" aria-label="WhatsApp" style="color: #ffffff; display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; background: rgba(255,255,255,0.1); border-radius: 50%; text-decoration: none;">
+    <i data-lucide="message-circle" style="width: 18px; height: 18px;"></i>
+  </a>
+</div>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col-title">Navigation</h4>
+          <ul class="footer-links-list">
+            <li class="footer-link-item"><a href="#home">Home</a></li>
+            <li class="footer-link-item"><a href="#about">About School</a></li>
+            <li class="footer-link-item"><a href="#news">News & Updates</a></li>
+            <li class="footer-link-item"><a href="#memories">Campus Memories</a></li>
+            <li class="footer-link-item"><a href="#contact">Contact Administration</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col-title">Academic Wings</h4>
+          <ul class="footer-links-list">
+            <li class="footer-link-item"><a href="#academics">Ordinary Level (O-Level)</a></li>
+            <li class="footer-link-item"><a href="#academics">Advanced Level (A-Level)</a></li>
+            <li class="footer-link-item"><a href="#news">Science & Laboratory Studies</a></li>
+            <li class="footer-link-item"><a href="#news">ICT & Computer Training</a></li>
+            <li class="footer-link-item"><a href="#memories">Sports & Athletic Program</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col-title">School Address</h4>
+          <ul class="footer-contact-list">
+            <li class="footer-contact-item">
+              <i data-lucide="map-pin" style="width: 17px; height: 17px;"></i>
+              <span>ENGUTOTO HIGH SCHOOL,<br>P.O. BOX 143, Monduli, Arusha</span>
+            </li>
+            <li class="footer-contact-item">
+              <i data-lucide="phone" style="width: 17px; height: 17px;"></i>
+              <div>
+                <a href="tel:+255764961311">+255 764 961 311</a><br>
+                <a href="tel:+25572967368">+255 729 673 68</a>
+              </div>
+            </li>
+            <li class="footer-contact-item">
+              <i data-lucide="compass" style="width: 17px; height: 17px;"></i>
+              <span>Monduli District Council, Tanzania</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom-bar">
+        <span>&copy; 2025 Engutoto Secondary School. All rights reserved.</span>
+        <div class="footer-bottom-links">
+          <a href="#">Ministry of Education</a>
+          <a href="#">TAMISEMI Portal</a>
+          <a href="#">NECTA Results</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="modal-backdrop" id="joiningModal">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div class="modal-heading-group">
+          <span class="modal-pill">Admissions Intake</span>
+          <h2 class="modal-title">Joining Instructions</h2>
+        </div>
+        <button type="button" class="modal-close-btn" id="closeJoiningModalBtn" aria-label="Close modal">
+          <i data-lucide="x" style="width: 18px; height: 18px;"></i>
+        </button>
+      </div>
+
+      <div class="modal-section-title">Step 1: Select Academic Level</div>
+      <div class="level-switch-grid">
+        <div class="level-card selected" data-level="olevel" id="optOlevel">
+          <i data-lucide="graduation-cap" style="width: 22px; height: 22px;"></i>
+          <span class="level-name">O-Level</span>
+          <span class="level-hint">Form 1 Intake</span>
+        </div>
+        <div class="level-card" data-level="alevel" id="optAlevel">
+          <i data-lucide="book-open" style="width: 22px; height: 22px;"></i>
+          <span class="level-name">A-Level</span>
+          <span class="level-hint">Form 5 Intake</span>
+        </div>
+      </div>
+
+      <div class="class-selection-container">
+        <div class="modal-section-title">Step 2: Select Class / Form</div>
+        <div class="class-chips-wrapper" id="classChipsContainer"></div>
+      </div>
+
+      <a href="documents/joining-instruction-form-1.pdf" class="modal-action-btn" id="modalDownloadAction" download>
+        <i data-lucide="download" style="width: 18px; height: 18px;"></i>
+        <span id="modalDownloadLabel">Download Form 1 Instructions</span>
+      </a>
+    </div>
+  </div>
+
+  <script>
+    lucide.createIcons();
+
+    const searchBox = document.getElementById('searchBox');
+    const searchTrigger = document.getElementById('searchTrigger');
+    const searchInput = document.getElementById('searchInput');
+
+    searchTrigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = searchBox.classList.toggle('open');
+      if (isOpen) {
+        searchInput.focus();
+      } else {
+        searchInput.value = '';
+      }
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!searchBox.contains(e.target) && searchBox.classList.contains('open')) {
+        searchBox.classList.remove('open');
+        searchInput.value = '';
+      }
+    });
+
+    const navToggleBtn = document.getElementById('navToggleBtn');
+    const sidebarBackdrop = document.getElementById('sidebarBackdrop');
+    const sidebarCloseBtn = document.getElementById('sidebarCloseBtn');
+    const sidebarLinks = document.querySelectorAll('.sidebar-link');
+
+    function openSidebar() {
+      sidebarBackdrop.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeSidebar() {
+      sidebarBackdrop.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    navToggleBtn.addEventListener('click', openSidebar);
+    sidebarCloseBtn.addEventListener('click', closeSidebar);
+
+    sidebarBackdrop.addEventListener('click', (e) => {
+      if (e.target === sidebarBackdrop) {
+        closeSidebar();
+      }
+    });
+
+    sidebarLinks.forEach(link => {
+      link.addEventListener('click', closeSidebar);
+    });
+
+    const modalBackdrop = document.getElementById('joiningModal');
+    const openModalBtn = document.getElementById('openJoiningModalBtn');
+    const closeModalBtn = document.getElementById('closeJoiningModalBtn');
+    const optOlevel = document.getElementById('optOlevel');
+    const optAlevel = document.getElementById('optAlevel');
+    const classChipsContainer = document.getElementById('classChipsContainer');
+    const modalDownloadAction = document.getElementById('modalDownloadAction');
+    const modalDownloadLabel = document.getElementById('modalDownloadLabel');
+
+    let currentLevel = 'olevel';
+    let currentClass = 'Form 1';
+
+    const levelClasses = {
+      olevel: ['Form 1'],
+      alevel: ['Form 5']
+    };
+
+    const classPdfMap = {
+      'Form 1': 'documents/joining-instruction-form-1.pdf',
+      'Form 5': 'documents/joining-instruction-form-5.pdf'
+    };
+
+    function renderClassChips() {
+      classChipsContainer.innerHTML = '';
+      const classes = levelClasses[currentLevel];
+      
+      classes.forEach((cls) => {
+        const chip = document.createElement('button');
+        chip.type = 'button';
+        chip.className = 'class-chip' + (cls === currentClass ? ' selected' : '');
+        chip.textContent = cls;
+
+        chip.addEventListener('click', () => {
+          document.querySelectorAll('.class-chip').forEach(c => c.classList.remove('selected'));
+          chip.classList.add('selected');
+          currentClass = cls;
+          updateDownloadButton();
+        });
+
+        classChipsContainer.appendChild(chip);
+      });
+      updateDownloadButton();
+    }
+
+    function updateDownloadButton() {
+      modalDownloadLabel.textContent = `Download ${currentClass} Instructions`;
+      const targetPdf = classPdfMap[currentClass] || `documents/joining-instruction-${currentClass.toLowerCase().replace(' ', '-')}.pdf`;
+      modalDownloadAction.href = targetPdf;
+      modalDownloadAction.setAttribute('download', `${currentClass.toLowerCase().replace(' ', '-')}-joining-instruction.pdf`);
+    }
+
+    function selectLevel(level) {
+      currentLevel = level;
+      if (level === 'olevel') {
+        optOlevel.classList.add('selected');
+        optAlevel.classList.remove('selected');
+        currentClass = 'Form 1';
+      } else {
+        optAlevel.classList.add('selected');
+        optOlevel.classList.remove('selected');
+        currentClass = 'Form 5';
+      }
+      renderClassChips();
+    }
+
+    optOlevel.addEventListener('click', () => selectLevel('olevel'));
+    optAlevel.addEventListener('click', () => selectLevel('alevel'));
+
+    renderClassChips();
+
+    function openModal() {
+      modalBackdrop.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      modalBackdrop.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    openModalBtn.addEventListener('click', openModal);
+    closeModalBtn.addEventListener('click', closeModal);
+
+    modalBackdrop.addEventListener('click', (e) => {
+      if (e.target === modalBackdrop) {
+        closeModal();
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        if (modalBackdrop.classList.contains('active')) {
+          closeModal();
+        }
+        if (sidebarBackdrop.classList.contains('active')) {
+          closeSidebar();
+        }
+      }
+    });
+
+    const exhibitCards = document.querySelectorAll('.exhibit-card');
+    const prevExhibitBtn = document.getElementById('prevExhibitBtn');
+    const nextExhibitBtn = document.getElementById('nextExhibitBtn');
+    const currentExhibitIdx = document.getElementById('currentExhibitIdx');
+    const totalExhibitCount = document.getElementById('totalExhibitCount');
+
+    let currentExhibit = 0;
+    const totalExhibits = exhibitCards.length;
+    totalExhibitCount.textContent = totalExhibits;
+
+    function updateExhibit() {
+      const isMobile = window.innerWidth <= 640;
+      const xOffset = isMobile ? 55 : 62;
+      const zOffset = isMobile ? -110 : -160;
+      const yAngle = isMobile ? 32 : 40;
+
+      exhibitCards.forEach((card, idx) => {
+        const offset = idx - currentExhibit;
+        
+        if (offset === 0) {
+          card.style.transform = 'translateX(0) translateZ(0) rotateY(0deg) scale(1)';
+          card.style.opacity = '1';
+          card.style.zIndex = '10';
+          card.style.pointerEvents = 'auto';
+          card.style.borderColor = 'var(--color-primary)';
+        } else if (offset === -1) {
+          card.style.transform = `translateX(-${xOffset}%) translateZ(${zOffset}px) rotateY(${yAngle}deg) scale(0.85)`;
+          card.style.opacity = '0.7';
+          card.style.zIndex = '5';
+          card.style.pointerEvents = 'auto';
+          card.style.borderColor = 'var(--color-border)';
+        } else if (offset === 1) {
+          card.style.transform = `translateX(${xOffset}%) translateZ(${zOffset}px) rotateY(-${yAngle}deg) scale(0.85)`;
+          card.style.opacity = '0.7';
+          card.style.zIndex = '5';
+          card.style.pointerEvents = 'auto';
+          card.style.borderColor = 'var(--color-border)';
+        } else if (offset < -1) {
+          card.style.transform = `translateX(-${xOffset * 1.5}%) translateZ(${zOffset * 2}px) rotateY(${yAngle + 10}deg) scale(0.65)`;
+          card.style.opacity = '0';
+          card.style.zIndex = '1';
+          card.style.pointerEvents = 'none';
+          card.style.borderColor = 'var(--color-border)';
+        } else if (offset > 1) {
+          card.style.transform = `translateX(${xOffset * 1.5}%) translateZ(${zOffset * 2}px) rotateY(-${yAngle + 10}deg) scale(0.65)`;
+          card.style.opacity = '0';
+          card.style.zIndex = '1';
+          card.style.pointerEvents = 'none';
+          card.style.borderColor = 'var(--color-border)';
+        }
+      });
+
+      currentExhibitIdx.textContent = currentExhibit + 1;
+    }
+
+    prevExhibitBtn.addEventListener('click', () => {
+      if (currentExhibit > 0) {
+        currentExhibit--;
+      } else {
+        currentExhibit = totalExhibits - 1;
+      }
+      updateExhibit();
+    });
+
+    nextExhibitBtn.addEventListener('click', () => {
+      if (currentExhibit < totalExhibits - 1) {
+        currentExhibit++;
+      } else {
+        currentExhibit = 0;
+      }
+      updateExhibit();
+    });
+
+    exhibitCards.forEach((card, idx) => {
+      card.addEventListener('click', () => {
+        if (currentExhibit !== idx) {
+          currentExhibit = idx;
+          updateExhibit();
+        }
+      });
+    });
+
+    window.addEventListener('resize', updateExhibit);
+    updateExhibit();
+
+    const contactForm = document.getElementById('contactSchoolForm');
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('Thank you for your message. Engutoto Secondary School administration will contact you shortly.');
+      contactForm.reset();
+    });
+  </script>
+
+</body>
+</html>
